@@ -3,6 +3,7 @@ from textSummer.pipeline.stage01_data_ingestion import DataIngestionTrainingPipe
 from textSummer.pipeline.stage02_data_validation import DataValidationTrainingPipeline
 from textSummer.pipeline.stage03_data_transformation import DataTransformationTrainingPipeline
 from textSummer.pipeline.stage04_model_train import ModelTrainingPipeline
+from textSummer.pipeline.stage05_model_evaluation import ModelEvaluationPipeline
 
 
 try:
@@ -34,5 +35,11 @@ try:
   model_training.main()
   logger.info(f">>>>>>> stage {STAGE_NAME} completed <<<<<<<<<\n\nx===================x")
 
+  STAGE_NAME = "Model Evaluation stage"
+
+  logger.info(f">>>>>>> stage {STAGE_NAME} started <<<<<<<<<")
+  model_evaluation = ModelEvaluationPipeline()
+  model_evaluation.main()
+  logger.info(f">>>>>>> stage {STAGE_NAME} completed <<<<<<<<<\n\nx===================x")
 except Exception as e:
   raise e
