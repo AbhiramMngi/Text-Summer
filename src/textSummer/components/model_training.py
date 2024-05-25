@@ -15,7 +15,7 @@ class ModelTrainer:
 
   def train(self):
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    print(self.config.model_ckpt)
+    # print(self.config.model_ckpt)
     tokenizer = AutoTokenizer.from_pretrained(self.config.model_ckpt)
     model_pegasus = AutoModelForSeq2SeqLM.from_pretrained(self.config.model_ckpt).to(device)
     seq2seq_data_collator = DataCollatorForSeq2Seq(tokenizer, model = model_pegasus)
@@ -54,6 +54,7 @@ class ModelTrainer:
     # time.sleep(10)
 
     # train_thread.do_run = False
+    trainer.train()
 
     model_pegasus.save_pretrained(os.path.join(self.config.root_dir, "pegasus-samsum-model"))
     tokenizer.save_pretrained(os.path.join(self.config.root_dir, "pegasus-samsum-tokenizer"))

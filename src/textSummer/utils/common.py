@@ -35,7 +35,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
     raise e
   
 
-print("helooo")
+# print("helooo")
 def create_directories(path_to_directories: list, verbose = True) -> int:
   """ create list of directories
 
