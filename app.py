@@ -34,6 +34,6 @@ async def predict(text):
   
 uvicorn.run(
   app, 
-  host= "localhost",
-  port=8000
+  host= "0.0.0.0",
+  port=8080
 )
